@@ -26,9 +26,9 @@ public:
 
 	Color GetColor(int w, int h) {
 		Color res;
-		res.r = data[(w*width + h) * 3];
-		res.g = data[(w*width + h) * 3+1];
-		res.b = data[(w*width + h) * 3+2];
+		res.r = data[(h*width + w) * 3];
+		res.g = data[(h*width + w) * 3 + 1];
+		res.b = data[(h*width + w) * 3 + 2];
 		res.r /= 255.0f;
 		res.g /= 255.0f;
 		res.b /= 255.0f;
@@ -45,15 +45,15 @@ public:
 
 	unsigned int GetHeight() { return this->height; }
 
-	void SetColor(int w, int h,Color color) {
-		data[(w*width + h) * 3] = 255 * color.r;
-		data[(w*width + h) * 3 + 1] = 255 * color.g;
-		data[(w*width + h) * 3 + 2] = 255 * color.b;
+	void SetColor(int w, int h, Color color) {
+		data[(h*width + w) * 3] = 255 * color.r;
+		data[(h*width + w) * 3 + 1] = 255 * color.g;
+		data[(h*width + w) * 3 + 2] = 255 * color.b;
 	}
-	
+
 	int SaveImageAsPng(std::string filename) {
 		filename += ".png";
-		return stbi_write_png(filename.c_str(), this->width, this->height, 
+		return stbi_write_png(filename.c_str(), this->width, this->height,
 			this->numComponents, &(this->data[0]), 0);
 	}
 
