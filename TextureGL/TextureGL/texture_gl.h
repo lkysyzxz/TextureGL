@@ -26,9 +26,9 @@ public:
 
 	Color GetColor(int w, int h) {
 		Color res;
-		res.r = data[(h*width + w) * 3];
-		res.g = data[(h*width + w) * 3 + 1];
-		res.b = data[(h*width + w) * 3 + 2];
+		res.r = data[(h*width + w) * numComponents];
+		res.g = data[(h*width + w) * numComponents + 1];
+		res.b = data[(h*width + w) * numComponents + 2];
 		res.r /= 255.0f;
 		res.g /= 255.0f;
 		res.b /= 255.0f;
@@ -46,9 +46,9 @@ public:
 	unsigned int GetHeight() { return this->height; }
 
 	void SetColor(int w, int h, Color color) {
-		data[(h*width + w) * 3] = 255 * color.r;
-		data[(h*width + w) * 3 + 1] = 255 * color.g;
-		data[(h*width + w) * 3 + 2] = 255 * color.b;
+		data[(h*width + w) * numComponents] = 255 * color.r;
+		data[(h*width + w) * numComponents + 1] = 255 * color.g;
+		data[(h*width + w) * numComponents + 2] = 255 * color.b;
 	}
 
 	int SaveImageAsPng(std::string filename) {
